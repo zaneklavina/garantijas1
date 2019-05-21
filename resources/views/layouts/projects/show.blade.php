@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>{{ $project->title }}</h1>
-    <p>Published on:
-        {$project->created_at->format('F d, Y \a\t H:i:s') }
+    <p>Projekts pievienots:
+        {{$project->created_at->format('F d, Y \a\t H:i:s') }}
     </p>
 @endsection
