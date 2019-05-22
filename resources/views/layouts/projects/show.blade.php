@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{ $project->title }}</h1>
+    <a href="/projects" class="btn btn-secondary">Atpakaļ</a>
+    <br><br>
+    <h1>{{$project->kods}} - {{ $project->title }}</h1>
     <p>
         <b>Pasūtītājs: {{$project->body}};</b>
             <br>

@@ -22,6 +22,7 @@
             </div>
         
         @endforeach
+        {{$projects->links()}}
     @else 
         <p>Nav atrasti ieraksti</p>
     @endif
