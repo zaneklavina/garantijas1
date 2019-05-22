@@ -1,22 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Projekti</h1>
+    <h1 class="d-inline-flex">Projekti</h1>
+    <a class="btn btn-secondary btn-lg d-inline-flex float-right" href="/projects/create" role="button">Pievienot projektu</a> 
     @if(count($projects)>0)
         @foreach($projects as $project)
             <div class="card card-tilte bg-light m-1 pt-2 pb-1">
                 <div class="d-inline">
-                    <div class="d-inline-flex col-2">
+                    <div class="d-inline-flex col-1 px-1">
                         <a href="/projects/{{$project->id}}"><h5>{{$project->kods}}</h5></a>
                     </div>
-                        <div class="d-inline-flex col-4">
+                        <div class="d-inline-flex col-3">
                         <p>{{$project->title}}</p>
                     </div>
                     <div class="d-inline-flex col-3">
                         <p>Pasūtītājs: {{$project->body}}</p>
                     </div>
                     <div class="d-inline-flex col-2">  
-                        <small>Projekta kods ievadīts: {{$project->created_at}}</small>
+                        <small>Ievadīts: {{$project->created_at}}</small>
+                    </div>
+                    <div class="d-inline-flex col-2">  
+                        <small>Labots: {{$project->updated_at}}</small>
                     </div>
                 </div>
             </div>

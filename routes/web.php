@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
-Route::get('/par', 'PagesController@par');
+Route::get('/unauth', 'PagesController@index');
 
 Route::resource('projects', 'ProjectsController');
 Route::get('/projects/{id}', 'ProjectsController@show');
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');

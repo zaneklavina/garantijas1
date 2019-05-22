@@ -9,8 +9,4 @@ class PagesController extends Controller
     public function index(){
         return view('lapas/index');
     }
-
-    public function par(){
-        return view('lapas/par');
-    }
 }
