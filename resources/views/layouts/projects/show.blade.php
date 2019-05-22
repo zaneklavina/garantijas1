@@ -2,6 +2,7 @@
 
 @section('content')
     <a href="/projects" class="btn btn-secondary">Atpakaļ</a>
+    <a href="/projects/{{$project->id}}/edit" class="btn btn-secondary">Rediģēt</a>
     <br><br>
     <h1>{{$project->kods}} - {{ $project->title }}</h1>
     <p>

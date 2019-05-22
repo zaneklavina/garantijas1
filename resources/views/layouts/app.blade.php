@@ -11,6 +11,7 @@
         @include('include.navbar')
         <br>
             <div class="container">
+                @include('include.check')
                 @yield('content')
             </div>
     </body>
