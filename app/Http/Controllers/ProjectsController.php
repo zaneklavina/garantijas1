@@ -14,7 +14,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::orderby('id','desc')->paginate(8);
         return view('layouts.projects.index')->with('projects', $projects);
     }
 
@@ -25,7 +25,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.projects.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'kods'=>'required|unique:projects|size:8',
+            'title'=>'required',
+            'body'=>'required'
+        ]);
+
+        $project = new Project;
+        $project->kods = $request->input('kods');
+        $project->title = $request->input('title');
+        $project->body = $request->input('body');
+        $project->save();
+
+        return redirect('/projects')->with('success', 'Projekts pievienots');
     }
 
     /**
@@ -62,7 +74,12 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        if (is_null($project)) {
+            return $id;
+        };
+        return view('layouts.projects.edit')->with('project', $project);
+      
     }
 
     /**
@@ -74,7 +91,20 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'kods'=>'required',
+            'title'=>'required',
+            'body'=>'required'
+        ]);
+
+        $project = Project::find($id);
+        $project->kods = $request->input('kods');
+        $project->title = $request->input('title');
+        $project->body = $request->input('body');
+        $project->save();
+
+        return redirect('/projects')->with('success', 'Projekts veiksmīgi rediģēts');
+    
     }
 
     /**
@@ -85,6 +115,8 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+        $project->delete();
+        return redirect('/projects')->with('success', 'Projekts izdzēsts');
     }
 }
