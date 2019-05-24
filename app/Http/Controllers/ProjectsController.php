@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Project;
+use App\Contract;
 
 class ProjectsController extends Controller
 {
@@ -38,8 +39,8 @@ class ProjectsController extends Controller
     {
         $this->validate($request,[
             'kods'=>'required|unique:projects|size:8',
-            'title'=>'required',
-            'body'=>'required'
+            'title'=>'required|max:191',
+            'body'=>'required|max:191'
         ]);
 
         $project = new Project;
@@ -64,6 +65,7 @@ class ProjectsController extends Controller
             return $id;
         };
         return view('layouts.projects.show')->with('project', $project);
+
     }
 
     /**
@@ -76,7 +78,7 @@ class ProjectsController extends Controller
     {
         $project = Project::find($id);
         if (is_null($project)) {
-            return $id;
+            return view('layouts.error');
         };
         return view('layouts.projects.edit')->with('project', $project);
       
@@ -92,9 +94,9 @@ class ProjectsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'kods'=>'required',
-            'title'=>'required',
-            'body'=>'required'
+            'kods'=>'required|size:8',
+            'title'=>'required|max:191',
+            'body'=>'required|max:191'
         ]);
 
         $project = Project::find($id);
@@ -116,6 +118,9 @@ class ProjectsController extends Controller
     public function destroy($id)
     {
         $project = Project::find($id);
+        if (is_null($project)) {
+            return view('layouts.error');
+        };
         $project->delete();
         return redirect('/projects')->with('success', 'Projekts izdzēsts');
     }

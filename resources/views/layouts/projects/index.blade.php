@@ -17,10 +17,10 @@
                         <p>Pasūtītājs: {{$project->body}}</p>
                     </div>
                     <div class="d-inline-flex col-2">  
-                        <small>Ievadīts: {{$project->created_at}}</small>
+                        <small>Ievadīts: {{$project->created_at->format('F d, Y \a\t H:i:s') }}</small>
                     </div>
                     <div class="d-inline-flex col-2">  
-                        <small>Labots: {{$project->updated_at}}</small>
+                        <small>Labots: {{$project->updated_at->format('F d, Y \a\t H:i:s') }}</small>
                     </div>
                 </div>
             </div>

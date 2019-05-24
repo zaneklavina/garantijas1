@@ -18,3 +18,6 @@ Route::get('/projects/{id}', 'ProjectsController@show');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::resource('/contracts', 'ContractsController');
+Route::get('/contracts/index', 'ProjectsController@index');
+//Route::get('/contracts/{id}', 'ContractsController@show');

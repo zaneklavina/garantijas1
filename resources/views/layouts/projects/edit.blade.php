@@ -15,6 +15,6 @@
             {{Form::label('body', 'Projekta pasūtītājs')}}
             {{Form::text('body', $project->body, ['class'=>'form-control', 'placeholder'=>'Ievadiet projekta pasūtītāju'])}}
         </div>
-        {{Form::submit('Izveidot', ['class'=>'btn btn-success'])}}
+        {{Form::submit('Saglabāt', ['class'=>'btn btn-success'])}}
     {{ Form::close() }}
 @endsection

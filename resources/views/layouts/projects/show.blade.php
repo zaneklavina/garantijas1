@@ -11,8 +11,11 @@
     <h1>{{$project->kods}} - {{ $project->title }}</h1>
     <p>
         <b>Pasūtītājs: {{$project->body}};</b>
-            <br>
+        <br>
+        Ievadīts: {{$project->created_at->format('F d, Y \a\t H:i:s') }}
+        <br>
         Pēdējo reizi rediģēts: {{$project->updated_at->format('F d, Y \a\t H:i:s') }}
     </p>
-    <h2>Projekta garantijas<h2>
+    <a href="/contracts/index"><h2>Projekta līgumi<h2></a>
+   
 @endsection

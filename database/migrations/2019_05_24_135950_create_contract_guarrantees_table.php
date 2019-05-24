@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectsTable extends Migration
+class CreateContractGuarranteesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('contract_guarrantees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('kods',8);
-            $table->string('title');
-            $table->mediumText('body');
-            $table->timestamps();
+            $table->integer('contract_id');
+            $table->integer('guarantee_id');
         });
     }
 
@@ -29,6 +27,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('contract_guarrantees');
     }
 }
