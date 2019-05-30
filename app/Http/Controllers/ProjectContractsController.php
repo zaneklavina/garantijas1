@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Project;
+use App\Contract;
+use App\ProjectContract;
 
 class ProjectContractsController extends Controller
 {
@@ -13,7 +16,7 @@ class ProjectContractsController extends Controller
      */
     public function index()
     {
-        //
+       //
     }
 
     /**
@@ -44,8 +47,16 @@ class ProjectContractsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { 
+        
+        $projectContracts = DB::table('projects')
+        ->join('contracts', 'contracts.project_id', '=', 'projects.id')->where('projects.id', '=', $id)
+        ->join('contract_types', 'contract_types.id', '=', 'contracts.type')
+        ->select('contracts.*', 'contract_types.contract_type', 'projects.kods')
+        ->get();
+        return view('layouts.projects.list.show')->with('projectContracts', $projectContracts);
+
+       
     }
 
     /**

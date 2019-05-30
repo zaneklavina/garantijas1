@@ -21,8 +21,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm">
+            <div class="container"><img src="{{URL::asset('/image/logo_binders.png')}}" alt="Pic" height="50" width="50">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Sākums
                 </a>

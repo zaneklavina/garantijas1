@@ -18,6 +18,12 @@ Route::get('/projects/{id}', 'ProjectsController@show');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::resource('/contracts', 'ContractsController');
-Route::get('/contracts/index', 'ProjectsController@index');
-//Route::get('/contracts/{id}', 'ContractsController@show');
+
+Route::resource('contracts', 'ContractsController');
+Route::get('/contracts/{id}', 'ContractsController@show');
+
+Route::resource('guarantees', 'GuaranteesController');
+Route::get('/guarantees/{id}', 'GuaranteesController@show');
+
+Route::resource('projects/list', 'ProjectContractsController');
+Route::get('projects/list/{id}', 'ProjectContractsController@show');

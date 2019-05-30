@@ -8,9 +8,7 @@ class Contract extends Model
 {
     protected $table = 'contracts';
 
-    protected $primaryKey = 'project_id';
-
-
+    protected $primaryKey = 'id';
 
     public function contract()
     {

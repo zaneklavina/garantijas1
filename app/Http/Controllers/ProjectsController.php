@@ -62,7 +62,7 @@ class ProjectsController extends Controller
     {   
         $project = Project::find($id);
         if (is_null($project)) {
-            return $id;
+            return view ('layouts.error');
         };
         return view('layouts.projects.show')->with('project', $project);
 
@@ -118,10 +118,14 @@ class ProjectsController extends Controller
     public function destroy($id)
     {
         $project = Project::find($id);
+        $contract = Contract::where('project_id', '=', $id);
+        $guarantee = Guarantee::where('project_id', '=', $id);
         if (is_null($project)) {
             return view('layouts.error');
         };
+        if (is_null($contract && $guarantee)){
         $project->delete();
         return redirect('/projects')->with('success', 'Projekts izdzēsts');
-    }
+    }else return redirect('/projects')->with('error', 'Projektu nevar izdzēst, jo projektam pastāv līgumi vai garantijas');
+}
 }

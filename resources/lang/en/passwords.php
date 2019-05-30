@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'password' => 'Passwords must be at least eight characters and match the confirmation.',
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have e-mailed your password reset link!',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that e-mail address.",
+    'password' => 'Parolei jābūt vismaz 8 rakstzīmju garumā.',
+    'reset' => 'Jūsu parole tikai atjaunota!',
+    'sent' => 'Esam jums nosūtījuši adresi paroles atjaunošanai uz Jūsu e-pastu!',
+    'token' => 'Paroles atjaunošana nav pieejama.',
+    'user' => "Lietotājs ar šādu e-pastu netika atrasts.",
 
 ];
